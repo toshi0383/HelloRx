@@ -1,0 +1,25 @@
+PODS:
+  - Action (2.2.1):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - NSObject+Rx (2.0.0):
+    - RxSwift
+  - RxCocoa (3.3.1):
+    - RxSwift (~> 3.3)
+  - RxSwift (3.3.1)
+
+DEPENDENCIES:
+  - Action
+  - NSObject+Rx
+  - RxCocoa
+  - RxSwift
+
+SPEC CHECKSUMS:
+  Action: 93c6c9eec95eb76428b2d49a6d260466c2f71b7e
+  NSObject+Rx: 2a9cd801d9c847e6d2486cbad8d7701b67834e70
+  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+
+PODFILE CHECKSUM: 6d4774b9fe1169ac7cc557183f551691b184289f
+
+COCOAPODS: 1.2.0

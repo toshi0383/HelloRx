@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1792ED9D370E6E402B1DE0BE /* Pods_HelloRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F70963A63CCFF9B94338D2 /* Pods_HelloRx.framework */; };
 		1F83AA791E8CDDFA0095638E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83AA781E8CDDFA0095638E /* AppDelegate.swift */; };
 		1F83AA7B1E8CDDFA0095638E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83AA7A1E8CDDFA0095638E /* ViewController.swift */; };
 		1F83AA7E1E8CDDFA0095638E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F83AA7C1E8CDDFA0095638E /* Main.storyboard */; };
@@ -22,6 +23,9 @@
 		1F83AA7F1E8CDDFA0095638E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F83AA821E8CDDFA0095638E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F83AA841E8CDDFA0095638E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41066A047BAA52E3F9603311 /* Pods-HelloRx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloRx.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloRx/Pods-HelloRx.release.xcconfig"; sourceTree = "<group>"; };
+		824E8F59CD4B8A944F50A8D1 /* Pods-HelloRx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloRx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloRx/Pods-HelloRx.debug.xcconfig"; sourceTree = "<group>"; };
+		96F70963A63CCFF9B94338D2 /* Pods_HelloRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1792ED9D370E6E402B1DE0BE /* Pods_HelloRx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				1F83AA771E8CDDFA0095638E /* HelloRx */,
 				1F83AA761E8CDDFA0095638E /* Products */,
+				C01A45160B4135768A4EE261 /* Pods */,
+				65898C389B661C427C31F871 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = HelloRx;
 			sourceTree = "<group>";
 		};
+		65898C389B661C427C31F871 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96F70963A63CCFF9B94338D2 /* Pods_HelloRx.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C01A45160B4135768A4EE261 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				824E8F59CD4B8A944F50A8D1 /* Pods-HelloRx.debug.xcconfig */,
+				41066A047BAA52E3F9603311 /* Pods-HelloRx.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F83AA871E8CDDFA0095638E /* Build configuration list for PBXNativeTarget "HelloRx" */;
 			buildPhases = (
+				9619D56DC5FB242B0557D595 /* [CP] Check Pods Manifest.lock */,
 				1F83AA711E8CDDF90095638E /* Sources */,
 				1F83AA721E8CDDF90095638E /* Frameworks */,
 				1F83AA731E8CDDF90095638E /* Resources */,
+				43DB5D18523D1B4CCB1D65BB /* [CP] Embed Pods Frameworks */,
+				4D06A53B158CA0128FB1F002 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43DB5D18523D1B4CCB1D65BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloRx/Pods-HelloRx-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D06A53B158CA0128FB1F002 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloRx/Pods-HelloRx-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9619D56DC5FB242B0557D595 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1F83AA711E8CDDF90095638E /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		1F83AA881E8CDDFA0095638E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 824E8F59CD4B8A944F50A8D1 /* Pods-HelloRx.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HelloRx/Info.plist;
@@ -270,6 +346,7 @@
 		};
 		1F83AA891E8CDDFA0095638E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41066A047BAA52E3F9603311 /* Pods-HelloRx.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HelloRx/Info.plist;
