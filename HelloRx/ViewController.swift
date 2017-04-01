@@ -12,8 +12,8 @@ import RxCocoa
 
 class ViewController: UIViewController {
 
-    func create() -> Observable<Int> {
-        return .create { observer in
+    func create(delayEvents: Int? = nil) -> Observable<Int> {
+        let o = Observable<Int>.create { observer in
             print("run")
             observer.onNext(100)
             observer.onNext(200)
@@ -22,6 +22,11 @@ class ViewController: UIViewController {
             observer.onNext(500)
             observer.onCompleted()
             return Disposables.create()
+        }
+        if let delay = delayEvents {
+            return o.delay(RxTimeInterval(delay), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default))
+        } else {
+            return o
         }
     }
     func log<T>(_ identifier: String) -> (Event<T>) -> () {
@@ -46,10 +51,8 @@ class ViewController: UIViewController {
     }
 
     func test01() {
-
-        let o1 = create()
-
         do {
+            let o1 = create()
             let replaySubject = ReplaySubject<Int>.createUnbounded()
             _ = o1.bindTo(replaySubject)
             print("bindTo replaySubject")
@@ -62,9 +65,8 @@ class ViewController: UIViewController {
     }
 
     func test02() {
-
-        let o2 = create()
         do {
+            let o2 = create()
             let shared = o2.shareReplayLatestWhileConnected()
             print("shared")
 
@@ -76,9 +78,8 @@ class ViewController: UIViewController {
     }
 
     func test03() {
-
-        let o3 = create()
         do {
+            let o3 = create()
             let shared = o3.shareReplay(3)
             print("shared")
 
@@ -90,9 +91,8 @@ class ViewController: UIViewController {
     }
 
     func test04() {
-
-        let o4 = create()
         do {
+            let o4 = create(delayEvents: 1)
             let shared = o4.share()
             print("shared")
 
