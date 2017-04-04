@@ -12,14 +12,21 @@ import RxCocoa
 
 class ViewController: UIViewController {
 
+    func now() -> Int {
+        let date = Date()
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.nanosecond], from: date)
+        return components.nanosecond!
+    }
+
     func create(delayEvents: Int? = nil) -> Observable<Int> {
         let o = Observable<Int>.create { observer in
             print("run")
-            observer.onNext(100)
-            observer.onNext(200)
-            observer.onNext(300)
-            observer.onNext(400)
-            observer.onNext(500)
+            observer.onNext(self.now())
+            observer.onNext(self.now())
+            observer.onNext(self.now())
+            observer.onNext(self.now())
+            observer.onNext(self.now())
             observer.onCompleted()
             return Disposables.create()
         }
