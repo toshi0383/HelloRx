@@ -27,7 +27,6 @@ class ViewController: UIViewController {
             observer.onNext(self.now())
             observer.onNext(self.now())
             observer.onNext(self.now())
-            observer.onCompleted()
             return Disposables.create()
         }
         if let delay = delayEvents {
@@ -51,10 +50,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        test01()
+//        test01()
         test02()
-        test03()
-        test04()
+//        test03()
+//        test04()
     }
 
     func test01() {
