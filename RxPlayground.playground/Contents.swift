@@ -52,6 +52,7 @@ func log<T>(_ identifier: String) -> (Event<T>) -> () {
 // - subscribeしなくても動く
 //
 
+// - share系はsubscribeしないと動かない (内部でrefCount()しているため)
 func test04() {
     do {
         let o4 = create()
@@ -70,6 +71,7 @@ func test04() {
 }
 
 //test04()
+// - publishしてconnectすれば、subscribeしなくても動く
 
 func test06() {
     do {
@@ -87,12 +89,29 @@ func test06() {
 
 //test06()
 
+// - Subject系はsubscribeしなくても動く
+func test08() {
+    do {
+        let o1 = create()
+        let subject = PublishSubject<String>()
+        subject.onNext("hello (not subscribed but this event is cached)")
+        _ = o1.bindTo(subject)
+        print("bindTo publishsubject")
+
+        _ = subject
+            .do(onSubscribed: {print("subscribed")})
+            .delaySubscription(3.5, scheduler: MainScheduler.instance).subscribe(log("*4"))
+    }
+}
+
+
+test08()
+
 //
 // Replayの話
 //
 
-// ReplaySubjecjt
-// - Subject系は全部HOT
+// ReplaySubject
 // - ReplaySubjectは指定された数だけイベントをキャッシュする
 func test01() {
     do {
@@ -117,7 +136,7 @@ func test01() {
 // - Note: shareReplay(n)はnが1の場合とそれ以外とで実装が分かれている.
 //      n == 1: ShareReplay1(source: self.asObservable())
 //      else  : self.replay(bufferSize).refCount()
-// - (どちらもsubscribeしないと動かないみたい)
+// - もちろん、subscribeしないと動かない.
 
 func test03() {
     do {
@@ -157,6 +176,6 @@ func test02() {
     }
 }
 
-test02()
+//test02()
 
 RunLoop.main.run(until: Date(timeIntervalSinceNow: 13))
