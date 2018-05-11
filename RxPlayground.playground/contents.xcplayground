@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='5.0' target-platform='ios'>
-    <timeline fileName='timeline.xctimeline'/>
+<playground version='6.0' target-platform='ios' executeOnSourceChanges='false'>
+    <pages>
+        <page name='share vs shareReplay vs shareReplayLatestWhileConnected'/>
+        <page name='caching values'/>
+        <page name='dispose'/>
+        <page name='flatMapLatest'/>
+        <page name='Errored PublishSubject'/>
+        <page name='send request on subscription'/>
+        <page name='Variable vs whileConnected'/>
+    </pages>
 </playground>
