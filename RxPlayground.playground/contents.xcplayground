@@ -6,7 +6,6 @@
         <page name='dispose'/>
         <page name='flatMapLatest'/>
         <page name='Errored PublishSubject'/>
-        <page name='send request on subscription'/>
         <page name='Variable vs whileConnected'/>
     </pages>
 </playground>

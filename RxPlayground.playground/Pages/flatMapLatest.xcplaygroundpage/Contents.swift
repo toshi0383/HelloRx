@@ -42,16 +42,15 @@ let secondFastResponse = create(interval: 0.2)
 
 _ = Observable<Int>.timer(0, period: RxTimeInterval(exactly: 3), scheduler: MainScheduler.instance)
     .take(2)
-    .flatMap { num -> Observable<String> in
+    .flatMapLatest { num -> Observable<String> in
         if num % 2 == 0 {
             return firstSlowResponse.debug("[firstSlowResponse]")
         } else {
             // trigger firstSlowResponse to get disposed
-            return secondFastResponse//.delaySubscription(2.0, scheduler: MainScheduler.instance)
+            return secondFastResponse
         }
     }
     .subscribe(_log("hello"))
-//    .subscribe({ _log("hello")($0) })
 
 RunLoop.main.run(until: Date(timeIntervalSinceNow: 14))
 
