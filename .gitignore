@@ -1,3 +1,4 @@
+.DS_Store
 ### https://raw.github.com/github/gitignore/35c010258fc790ad769033e9ccfb1021178f2925/swift.gitignore
 
 # Xcode
@@ -54,7 +55,7 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
 
-Carthage/Build
+Carthage
 
 # fastlane
 #
