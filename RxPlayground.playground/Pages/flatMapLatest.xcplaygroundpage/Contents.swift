@@ -55,16 +55,19 @@ func test01() {
 }
 
 func test02() {
-    let slowResponse = create(interval: 0.7)
-    let fastResponse = create(interval: 0.2)
+    let slowResponse = create(interval: 0.7).share()
+    let fastResponse = create(interval: 0.4)
 
-    _ = //Observable<Int>.timer(0, period: RxTimeInterval(exactly: 0.5), scheduler: MainScheduler.instance)
-        slowResponse
-        .take(2)
-        .flatMapLatest { num -> Observable<String> in
+    let trigger = Observable
+        .merge(slowResponse.take(1),
+               slowResponse.skip(1).take(1).delay(0.3, scheduler: MainScheduler.instance))
+        .map { _ in }
+
+    _ = trigger
+        .flatMapLatest { _ -> Observable<String> in
             return fastResponse.debug("[fastResponse]")
         }
-        .sample(slowResponse.map { _ in }.debug("[sampler]"))
+        .sample(trigger.map { _ in }.debug("[sampler]"))
         .subscribe(_log("hello"))
 }
 

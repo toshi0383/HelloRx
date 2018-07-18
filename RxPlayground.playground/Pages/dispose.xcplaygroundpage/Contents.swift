@@ -59,6 +59,45 @@ var c: DisposeBag? = DisposeBag()
 create().subscribe(log("4")).disposed(by: c!)
 c = nil
 
+// Dispose then relay event
+
+do {
+    class AnalyticsStore {
+        static let shared = AnalyticsStore()
+        let playerDisposed = PublishRelay<Bool>()
+
+        private let disposeBag = DisposeBag()
+        private let variable = Variable(false)
+        
+        private init() {
+            playerDisposed
+                .debug("[bind to variable]")
+                .bind(to: variable)
+                .disposed(by: disposeBag)
+        }
+
+    }
+
+    class Player {
+        let relay = PublishRelay<Bool>()
+        private let disposeBag = DisposeBag()
+
+        init() {
+            relay
+                .subscribe(onNext: {
+                    AnalyticsStore.shared.playerDisposed.accept($0)
+                })
+                .disposed(by: disposeBag)
+        }
+
+        deinit {
+            relay.accept(false)
+        }
+    }
+    var player: Player? = Player()
+//    player = nil
+}
+
 RunLoop.main.run(until: Date(timeIntervalSinceNow: 4))
 
 //: [Next](@next)
