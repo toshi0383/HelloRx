@@ -50,7 +50,7 @@ func log<T>(_ identifier: String) -> (Event<T>) -> () {
 func test004() {
     do {
         let o4 = create()
-        let shared = o4//.share()
+        let shared = o4.share()
         print("share()")
         // **When the first observer subscribes to this Observable, RefCount connects to the underlying connectable Observable.**
 
@@ -58,9 +58,12 @@ func test004() {
         _ = shared.subscribe(log("B"))
 //                _ = shared.subscribe(log("C"))
 //                _ = shared.subscribe(log("D"))
+
+        // shareしない場合、ここは最初からカウントすることになる.
         _ = shared
             .do(onSubscribed: {print("subscribed")})
-            .delaySubscription(3.5, scheduler: MainScheduler.instance).subscribe(log("*E"))
+            .delaySubscription(3.5, scheduler: MainScheduler.instance)
+            .subscribe(log("*E"))
     }
 }
 test004()
